@@ -8,7 +8,7 @@ import (
 	"github.com/nsqio/go-nsq"
 )
 
-//GRPCPool pool info
+//NSQ Producer Pool
 type NSQProducerPool struct {
 	Mu          sync.Mutex
 	IdleTimeout time.Duration
@@ -107,8 +107,8 @@ func (c *NSQProducerPool) IdleCount() int {
 	return len(conns)
 }
 
-//NewGRPCPool init grpc pool
-func NewNSQPool(o *Options) (*NSQProducerPool, error) {
+//init nsq producer pool
+func NewNSQProducerPool(o *Options) (*NSQProducerPool, error) {
 	if err := o.validate(); err != nil {
 		return nil, err
 	}
